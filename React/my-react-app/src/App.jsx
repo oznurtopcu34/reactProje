@@ -6,17 +6,21 @@ import Giris from './pages/Giris';
 import Personel from './pages/Personel';
 import NonFound from './pages/NonFound';
 import Linkler from './component/Linkler';
+import React, { useState } from 'react';
 
 function App() {
+
+  const [uyeler, setUyeler] = useState([]);
+
   return (
     <>
-      <BrowserRouter>     
-        <Linkler />    
+      <BrowserRouter>
+        <Linkler />
         <Routes>
           <Route path="/" element={<Anasayfa />} />
-          <Route path="/Giris" element={<Giris />} />
-          <Route path="/Kayit" element={<Kayit />} />
-          <Route path="/Personel" element={<Personel />} />
+          <Route path="/Giris" element={<Giris uyeler={uyeler} />} />
+          <Route path="/Kayit" element={<Kayit uyeler={uyeler} setUyeler={setUyeler} />} />
+          <Route path="/Personel" element={<Personel uyeler={uyeler} />} />
           <Route path="*" element={<NonFound />} />
         </Routes>
       </BrowserRouter>
@@ -25,3 +29,4 @@ function App() {
 }
 
 export default App;
+
