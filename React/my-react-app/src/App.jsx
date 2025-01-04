@@ -20,7 +20,7 @@ function App() {
           <Route path="/" element={<Anasayfa />} />
           <Route path="/Giris" element={<Giris uyeler={uyeler} />} />
           <Route path="/Kayit" element={<Kayit uyeler={uyeler} setUyeler={setUyeler} />} />
-          <Route path="/Personel" element={<Personel uyeler={uyeler} />} />
+          <Route path="/Personel" element={<Personel/> } />
           <Route path="*" element={<NonFound />} />
         </Routes>
       </BrowserRouter>
