@@ -6,12 +6,13 @@ const Personel = () => {
   const [ad, setAd] = useState("");
   const [soyad, setSoyad] = useState("");
   const [bolum, setBolum] = useState("");
+  const [resimUrl, setResimUrl] = useState("");
   const [duzenlenenPersonel, setDuzenlenenPersonel] = useState(false);
   const [duzenlenenId, setDuzenlenenId] = useState(null);
   const [hataMesaji, setHataMesaji] = useState("");
 
   const kaydet = () => {
-    if (!ad || !soyad || !bolum) {
+    if (!ad || !soyad || !bolum || !resimUrl) {
       setHataMesaji("Lütfen tüm alanları doldurun!");
       return;
     }
@@ -20,7 +21,7 @@ const Personel = () => {
       setPersoneller(
         personeller.map((personel) =>
           personel.id === duzenlenenId
-            ? { ...personel, ad, soyad, bolum }
+            ? { ...personel, ad, soyad, bolum, resimUrl }
             : personel
         )
       );
@@ -28,7 +29,7 @@ const Personel = () => {
     } else {
       setPersoneller([
         ...personeller,
-        { id: yeniId, ad, soyad, bolum },
+        { id: yeniId, ad, soyad, bolum, resimUrl },
       ]);
       setYeniId(yeniId + 1);
     }
@@ -36,6 +37,7 @@ const Personel = () => {
     setAd("");
     setSoyad("");
     setBolum("");
+    setResimUrl("");
     setDuzenlenenId(null);
     setHataMesaji("");
   };
@@ -46,6 +48,7 @@ const Personel = () => {
       setAd(personel.ad);
       setSoyad(personel.soyad);
       setBolum(personel.bolum);
+      setResimUrl(personel.resimUrl);
       setDuzenlenenId(id);
       setDuzenlenenPersonel(true);
       setHataMesaji("");
@@ -57,8 +60,8 @@ const Personel = () => {
   };
 
   return (
-    <div >
-      <div >
+    <div>
+      <div>
         {hataMesaji && <p style={{ color: "red" }}>{hataMesaji}</p>}
         <div>
           <input
@@ -79,13 +82,19 @@ const Personel = () => {
             type="text"
             placeholder="Bölüm"
           />
-          <div >
+          <input
+            value={resimUrl}
+            onChange={(e) => setResimUrl(e.target.value)}
+            type="text"
+            placeholder="Resim URL"
+          />
+          <div>
             <button
-           
               onClick={() => {
                 setAd("");
                 setSoyad("");
                 setBolum("");
+                setResimUrl("");
                 setDuzenlenenPersonel(false);
                 setDuzenlenenId(null);
                 setHataMesaji("");
@@ -94,25 +103,27 @@ const Personel = () => {
               Temizle
             </button>
             <button onClick={kaydet}>
-              {duzenlenenPersonel ? "Güncelle" : "Ekle"}
+             Kaydet
             </button>
           </div>
         </div>
       </div>
 
-      <div >
+      <div>
         {personeller.map((personel) => (
-          <div key={personel.id}>
+          <div key={personel.id} >
+            {personel.resimUrl && (
+              <img
+                src={personel.resimUrl}           
+                style={{ width: "100px", height: "100px"}}
+              />
+            )}
             <p>ID: {personel.id}</p>
             <p>Ad: {personel.ad}</p>
             <p>Soyad: {personel.soyad}</p>
             <p>Bölüm: {personel.bolum}</p>
-            <button  onClick={() => sil(personel.id)}>
-              Sil
-            </button>
-            <button onClick={() => guncelle(personel.id)}>
-              Güncelle
-            </button>
+            <button onClick={() => sil(personel.id)}>Sil</button>
+            <button onClick={() => guncelle(personel.id)}>Güncelle</button>
           </div>
         ))}
       </div>
