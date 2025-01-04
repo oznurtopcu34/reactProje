@@ -14,8 +14,11 @@ function App() {
 
   return (
     <>
-      <BrowserRouter>
-        <Linkler />
+  
+<BrowserRouter>
+<div className='contanier'>
+    <Linkler />
+          </div>
         <Routes>
           <Route path="/" element={<Anasayfa />} />
           <Route path="/Giris" element={<Giris uyeler={uyeler} />} />
@@ -24,6 +27,8 @@ function App() {
           <Route path="*" element={<NonFound />} />
         </Routes>
       </BrowserRouter>
+
+      
     </>
   );
 }
