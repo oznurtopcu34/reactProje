@@ -18,14 +18,14 @@
  
   }
   .giris-container {
-    max-width: 400px; /* Kutu genişliği */
-    margin: 50px auto; /* Ortalamak için */
-    padding: 20px; /* İçerik boşluğu */
-    border: 1px solid #ccc; /* İnce bir çerçeve */
-    border-radius: 10px; /* Köşeleri yuvarlama */
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Hafif gölge efekti */
-    background-color: #f9f9f9; /* Arka plan rengi */
-    text-align: center; /* Metni ortalama*/
+    max-width: 400px; 
+    margin: 50px auto; 
+    padding: 20px; 
+    border: 1px solid #ccc; 
+    border-radius: 100px; 
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
+    background-color: #f9f9f9; 
+    text-align: center; 
 
     h1 {
         margin-bottom: 20px;
@@ -33,7 +33,7 @@
         color: #333;
   }
   input {
-    width: 100%; /* Genişliği kutu boyutuna uyar */
+    width: 85%;
     padding: 10px;
     margin: 10px 0;
     border: 1px solid #ccc;
@@ -41,20 +41,73 @@
     font-size: 16px;
   }
   button {
-    width: 100%; /* Butonu genişle */
+    width: 60%; 
     padding: 10px;
     background-color: #007bff;
     color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
+      border-radius: 5px;
     font-size: 16px;
   
   }
   
 }
   
+.kayit-container {
+    max-width: 500px; 
+    margin: 50px auto;
+    padding: 20px;
+    border: 1px solid #ccc; 
+    border-radius: 10px; 
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
+    background-color: #f9f9f9; 
 
+    h1 {
+        text-align: center;
+        font-size: 24px;
+        color: #333;
+        }
+
+      .hata-mesaji {
+        color: red;
+        font-size: 25px;
+        margin-bottom: 10px;
+        text-align: center;
+      }
+      input {
+        width: 95%; 
+        padding: 10px; 
+        margin-bottom: 15px; 
+        border: 1px solid #ccc; 
+        border-radius: 5px; 
+        font-size: 16px;
+  
+      }
+      button {
+        padding: 10px 15px;
+        margin: 5px; 
+     
+        border-radius: 5px;
+        font-size: 16px;
+     
+      }
+      button:hover {
+        background-color: #0056b3;
+        color: white;
+      }
+      .temizle-button {
+        background-color: #b46d73; 
+      
+      }
+     .kaydet-button {
+        background-color: #28a745; 
+     
+      }
+  }
+  
+  
+
+ 
+  
   
 
 

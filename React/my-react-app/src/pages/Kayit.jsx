@@ -52,9 +52,10 @@ const Kayit = ({ uyeler, setUyeler }) => {
   return (
     <>
       <div>
-        <div>
-          {hataMesaji && <p style={{ color: "red" }}>{hataMesaji}</p>}
-          <div>
+        <div className="kayit-container">
+          {hataMesaji && <p className="hata-mesaji">{hataMesaji}</p>}
+          <h1> Üye Kayıt Formu</h1>
+          
             <input
               value={ad}
               onChange={(e) => setAd(e.target.value)}
@@ -79,8 +80,8 @@ const Kayit = ({ uyeler, setUyeler }) => {
               type="password"
               placeholder="Şifre"
             />
-            <div>
-              <button
+        
+              <button className="temizle-button"
                 onClick={() => {
                   setAd("");
                   setSoyad("");
@@ -93,15 +94,15 @@ const Kayit = ({ uyeler, setUyeler }) => {
               >
                 Temizle
               </button>
-              <button onClick={kaydet}>
+              <button  className="kaydet-button" onClick={kaydet}>
               Kaydet
               </button>
-            </div>
+          
           </div>
         </div>
 
     
-      </div>
+     
     </>
   );
 };
