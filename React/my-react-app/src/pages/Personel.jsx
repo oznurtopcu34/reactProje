@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 
-const Personel = () => {
-  const [personeller, setPersoneller] = useState([]);
+const Personel = ({ personeller, setPersoneller }) => {
+
   const [yeniId, setYeniId] = useState(1);
   const [ad, setAd] = useState("");
   const [soyad, setSoyad] = useState("");
@@ -60,74 +60,86 @@ const Personel = () => {
   };
 
   return (
-    <div>
-      <div>
-        {hataMesaji && <p style={{ color: "red" }}>{hataMesaji}</p>}
-        <div>
-          <input
-            value={ad}
-            onChange={(e) => setAd(e.target.value)}
-            type="text"
-            placeholder="Ad"
-          />
-          <input
-            value={soyad}
-            onChange={(e) => setSoyad(e.target.value)}
-            type="text"
-            placeholder="Soyad"
-          />
-          <input
-            value={bolum}
-            onChange={(e) => setBolum(e.target.value)}
-            type="text"
-            placeholder="Bölüm"
-          />
-          <input
-            value={resimUrl}
-            onChange={(e) => setResimUrl(e.target.value)}
-            type="text"
-            placeholder="Resim URL"
-          />
-          <div>
-            <button
-              onClick={() => {
-                setAd("");
-                setSoyad("");
-                setBolum("");
-                setResimUrl("");
-                setDuzenlenenPersonel(false);
-                setDuzenlenenId(null);
-                setHataMesaji("");
-              }}
-            >
-              Temizle
-            </button>
-            <button onClick={kaydet}>
-             Kaydet
-            </button>
-          </div>
-        </div>
-      </div>
 
+<>  
+<div className="personel-container">
+    {hataMesaji && <p className="hata-mesaji">{hataMesaji}</p>}
+    <div className="personel-form">
+      <input
+        value={ad}
+        onChange={(e) => setAd(e.target.value)}
+        type="text"
+        placeholder="Ad"
+      />
+      <input
+        value={soyad}
+        onChange={(e) => setSoyad(e.target.value)}
+        type="text"
+        placeholder="Soyad"
+      />
+      <input
+        value={bolum}
+        onChange={(e) => setBolum(e.target.value)}
+        type="text"
+        placeholder="Bölüm"
+      />
+      <input
+        value={resimUrl}
+        onChange={(e) => setResimUrl(e.target.value)}
+        type="text"
+        placeholder="Resim URL"
+      />
       <div>
-        {personeller.map((personel) => (
-          <div key={personel.id} >
-            {personel.resimUrl && (
-              <img
-                src={personel.resimUrl}           
-                style={{ width: "100px", height: "100px"}}
-              />
-            )}
-            <p>ID: {personel.id}</p>
-            <p>Ad: {personel.ad}</p>
-            <p>Soyad: {personel.soyad}</p>
-            <p>Bölüm: {personel.bolum}</p>
-            <button onClick={() => sil(personel.id)}>Sil</button>
-            <button onClick={() => guncelle(personel.id)}>Güncelle</button>
-          </div>
-        ))}
+        <button
+          className="temizle-button"
+          onClick={() => {
+            setAd("");
+            setSoyad("");
+            setBolum("");
+            setResimUrl("");
+            setDuzenlenenPersonel(false);
+            setDuzenlenenId(null);
+            setHataMesaji("");
+          }}
+        >
+          Temizle
+        </button>
+        <button className="kaydet-button" onClick={kaydet}>
+          Kaydet
+        </button>
       </div>
     </div>
+  </div>
+  <div className="personel-list">
+  {personeller.map((personel) => (
+    <div key={personel.id} className="personel-card">
+      {personel.resimUrl && (
+        <img
+          src={personel.resimUrl}
+          alt={`${personel.ad} ${personel.soyad}`}
+        />
+      )}
+      <p>ID: {personel.id}</p>
+      <p>Ad: {personel.ad}</p>
+      <p>Soyad: {personel.soyad}</p>
+      <p>Bölüm: {personel.bolum}</p>
+      <button
+        className="sil-button"
+        onClick={() => sil(personel.id)}
+      >
+        Sil
+      </button>
+      <button
+        className="guncelle-button"
+        onClick={() => guncelle(personel.id)}
+      >
+        Güncelle
+      </button>
+    </div>
+  ))}
+</div>
+
+  </>  
   );
 };
 

@@ -28,7 +28,7 @@ const Kayit = ({ uyeler, setUyeler }) => {
       setDuzenlenenUye(false);
     } else {
       const yeniUye = {
-        id: yakalananId,
+        id: yakalananId+1,
         ad,
         soyad,
         kullaniciAdi,

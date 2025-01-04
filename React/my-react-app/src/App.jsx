@@ -11,6 +11,7 @@ import React, { useState } from 'react';
 function App() {
 
   const [uyeler, setUyeler] = useState([]);
+  const [personeller, setPersoneller] = useState([]);
 
   return (
     <>
@@ -23,7 +24,7 @@ function App() {
           <Route path="/" element={<Anasayfa />} />
           <Route path="/Giris" element={<Giris uyeler={uyeler} />} />
           <Route path="/Kayit" element={<Kayit uyeler={uyeler} setUyeler={setUyeler} />} />
-          <Route path="/Personel" element={<Personel/> } />
+          <Route path="/Personel" element={<Personel personeller={personeller} setPersoneller={setPersoneller}/> } />
           <Route path="*" element={<NonFound />} />
         </Routes>
       </BrowserRouter>
