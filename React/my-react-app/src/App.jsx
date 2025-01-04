@@ -2,7 +2,11 @@ import { useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
-
+import Anasayfa from './Component/Anasayfa'
+import Giris from './Component/Giris'
+import Kayit from './Component/Kayit'
+import NonFound from './Component/NonFound'
+import Personel from './Component/Personel'
 function App() {
   const [count, setCount] = useState(0)
 
