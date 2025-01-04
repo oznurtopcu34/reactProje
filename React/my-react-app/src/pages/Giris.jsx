@@ -22,7 +22,7 @@ const Giris = ({ uyeler }) => {
 
   return (
     <>
-      <div>
+      <div className="giris-container">
         <h1>Üye Girişi</h1>
         {hataMesaji && <p style={{ color: "red" }}>{hataMesaji}</p>}
         <input
