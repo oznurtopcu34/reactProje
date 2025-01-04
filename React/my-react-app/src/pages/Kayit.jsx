@@ -46,22 +46,8 @@ const Kayit = ({ uyeler, setUyeler }) => {
     setHataMesaji("");
   };
 
-  const guncelle = (id) => {
-    const uye = uyeler.find((uye) => uye.id === id);
-    if (uye) {
-      setAd(uye.ad);
-      setSoyad(uye.soyad);
-      setKullaniciAdi(uye.kullaniciAdi);
-      setSifre(uye.sifre);
-      setDuzenlenenId(id);
-      setDuzenlenenUye(true);
-      setHataMesaji("");
-    }
-  };
+  
 
-  const sil = (id) => {
-    setUyeler(uyeler.filter((uye) => uye.id !== id));
-  };
 
   return (
     <>
