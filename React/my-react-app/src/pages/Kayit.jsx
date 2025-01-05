@@ -1,5 +1,6 @@
-
 import React, { useState } from 'react';
+import { ToastContainer, toast } from 'react-toastify';
+
 
 const Kayit = ({ uyeler, setUyeler }) => {
   const [yakalananId, setYakalananId] = useState(1);
@@ -7,102 +8,92 @@ const Kayit = ({ uyeler, setUyeler }) => {
   const [soyad, setSoyad] = useState("");
   const [kullaniciAdi, setKullaniciAdi] = useState("");
   const [sifre, setSifre] = useState("");
-  const [duzenlenenUye, setDuzenlenenUye] = useState(false);
-  const [duzenlenenId, setDuzenlenenId] = useState(null);
-  const [hataMesaji, setHataMesaji] = useState("");
+ 
+
+const notify = () => toast("Lütfen tüm alanları doldurun!");
+const newnotify = () => toast("Aynı Kullanıcıadı var :(");
+const nextnotify = () => toast("Başarılı sekilde uye oldunuz:)");
+
 
   const kaydet = () => {
+ 
     if (!ad || !soyad || !kullaniciAdi || !sifre) {
-      setHataMesaji("Lütfen tüm alanları doldurun!");
-      return;
-    }
+      notify();
 
-    if (duzenlenenUye) {
-      setUyeler(
-        uyeler.map((uye) =>
-          uye.id === duzenlenenId
-            ? { ...uye, ad, soyad, kullaniciAdi, sifre }
-            : uye
-        )
-      );
-      setDuzenlenenUye(false);
-    } else {
+    }
+    else{
+
+   
+    const ayniKullaniciAdi = uyeler.map((uye) => uye.kullaniciAdi).find((kullanıcı) => kullanıcı === kullaniciAdi);
+
+    if (ayniKullaniciAdi) {
+      newnotify();
+      }
+   else {
       const yeniUye = {
-        id: yakalananId+1,
+        id: yakalananId + 1,
         ad,
         soyad,
         kullaniciAdi,
         sifre,
+        
       };
       setUyeler([...uyeler, yeniUye]);
       setYakalananId(yakalananId + 1);
+      nextnotify();
+      
     }
-
+ 
+  }
+    formTemizle();
+  };
+  
+  const formTemizle = () => {
     setAd("");
     setSoyad("");
     setKullaniciAdi("");
     setSifre("");
     setDuzenlenenId(null);
-    setHataMesaji("");
   };
-
-  
-
 
   return (
     <>
-      <div>
-        <div className="kayit-container">
-          {hataMesaji && <p className="hata-mesaji">{hataMesaji}</p>}
-          <h1> Üye Kayıt Formu</h1>
-          
-            <input
-              value={ad}
-              onChange={(e) => setAd(e.target.value)}
-              type="text"
-              placeholder="Ad"
-            />
-            <input
-              value={soyad}
-              onChange={(e) => setSoyad(e.target.value)}
-              type="text"
-              placeholder="Soyad"
-            />
-            <input
-              value={kullaniciAdi}
-              onChange={(e) => setKullaniciAdi(e.target.value)}
-              type="text"
-              placeholder="Kullanıcı Adı"
-            />
-            <input
-              value={sifre}
-              onChange={(e) => setSifre(e.target.value)}
-              type="password"
-              placeholder="Şifre"
-            />
-        
-              <button className="temizle-button"
-                onClick={() => {
-                  setAd("");
-                  setSoyad("");
-                  setKullaniciAdi("");
-                  setSifre("");
-                  setDuzenlenenUye(false);
-                  setDuzenlenenId(null);
-                  setHataMesaji("");
-                }}
-              >
-                Temizle
-              </button>
-              <button  className="kaydet-button" onClick={kaydet}>
-              Kaydet
-              </button>
-          
-          </div>
+      <div className="kayit-container">
+        <h1>Üye Kayıt Formu</h1>
+        <input
+          value={ad}
+          onChange={(e) => setAd(e.target.value)}
+          type="text"
+          placeholder="Ad"
+        />
+        <input
+          value={soyad}
+          onChange={(e) => setSoyad(e.target.value)}
+          type="text"
+          placeholder="Soyad"
+        />
+        <input
+          value={kullaniciAdi}
+          onChange={(e) => setKullaniciAdi(e.target.value)}
+          type="text"
+          placeholder="Kullanıcı Adı"
+        />
+        <input
+          value={sifre}
+          onChange={(e) => setSifre(e.target.value)}
+          type="password"
+          placeholder="Şifre"
+        />
+        <div className="button-container">
+          <button className="temizle-button" onClick={formTemizle}>
+            Temizle
+          </button>
+          <button className="kaydet-button" onClick={kaydet}>
+            Kaydet
+          </button>
         </div>
-
-    
-     
+      </div>
+      <ToastContainer />
     </>
   );
 };

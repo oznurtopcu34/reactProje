@@ -8,14 +8,19 @@ import NonFound from './pages/NonFound';
 import Linkler from './component/Linkler';
 import React, { useState } from 'react';
 
+
+import { ToastContainer, toast } from 'react-toastify';
+
+
 function App() {
 
   const [uyeler, setUyeler] = useState([]);
   const [personeller, setPersoneller] = useState([]);
   const [girisYapanUye, setGirisYapanUye] = useState(null);
+  const notify = () => toast("Wow so easy!");
   return (
     <>
-  
+<ToastContainer />
 <BrowserRouter>
 <div className='contanier'>
     <Linkler girisYapanUye={girisYapanUye} />
@@ -33,6 +38,7 @@ function App() {
                
         }
         </Routes>
+        <button onClick={notify}>Notify!</button>
       </BrowserRouter>
 
       
