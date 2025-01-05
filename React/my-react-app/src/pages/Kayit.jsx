@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 
 const Kayit = ({ uyeler, setUyeler }) => {
-  const [yakalananId, setYakalananId] = useState(uyeler.length > 0 ? uyeler[uyeler.length - 1].id + 1 : 1);
+  const [yakalananId, setYakalananId] = useState(1);
   const [ad, setAd] = useState("");
   const [soyad, setSoyad] = useState("");
   const [kullaniciAdi, setKullaniciAdi] = useState("");

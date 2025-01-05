@@ -12,20 +12,26 @@ function App() {
 
   const [uyeler, setUyeler] = useState([]);
   const [personeller, setPersoneller] = useState([]);
-
+  const [girisYapanUye, setGirisYapanUye] = useState(null);
   return (
     <>
   
 <BrowserRouter>
 <div className='contanier'>
-    <Linkler />
+    <Linkler girisYapanUye={girisYapanUye} />
           </div>
-        <Routes>
+          <Routes>
           <Route path="/" element={<Anasayfa />} />
-          <Route path="/Giris" element={<Giris uyeler={uyeler} />} />
+          <Route path="/Giris" element={<Giris uyeler={uyeler} setGirisYapanUye={setGirisYapanUye}/>} />
           <Route path="/Kayit" element={<Kayit uyeler={uyeler} setUyeler={setUyeler} />} />
-          <Route path="/Personel" element={<Personel personeller={personeller} setPersoneller={setPersoneller}/> } />
           <Route path="*" element={<NonFound />} />
+        
+        {
+          girisYapanUye&& 
+      
+          <Route path="/Personel" element={<Personel personeller={personeller} setPersoneller={setPersoneller} girisYapanUye={girisYapanUye}/> } />
+               
+        }
         </Routes>
       </BrowserRouter>
 

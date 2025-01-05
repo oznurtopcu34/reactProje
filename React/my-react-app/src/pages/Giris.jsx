@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-const Giris = ({ uyeler }) => {
+const Giris = ({ uyeler, setGirisYapanUye }) => {
   const [kullaniciAdi, setKullaniciAdi] = useState("");
   const [sifre, setSifre] = useState("");
   const [hataMesaji, setHataMesaji] = useState("");
@@ -13,7 +13,7 @@ const Giris = ({ uyeler }) => {
     );
 
     if (uye) {
-
+setGirisYapanUye(uye);
       navigate("/");
     } else {
       setHataMesaji("Hatalı kullanıcı adı veya şifre. Lütfen tekrar deneyin.");

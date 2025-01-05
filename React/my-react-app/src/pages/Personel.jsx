@@ -1,7 +1,8 @@
-import React, { useState } from "react";
+import React, { useState , useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
-const Personel = ({ personeller, setPersoneller }) => {
-
+const Personel = ({ personeller, setPersoneller, girisYapanUye}) => {
+ const navigate = useNavigate();
   const [yeniId, setYeniId] = useState(1);
   const [ad, setAd] = useState("");
   const [soyad, setSoyad] = useState("");
@@ -11,7 +12,19 @@ const Personel = ({ personeller, setPersoneller }) => {
   const [duzenlenenId, setDuzenlenenId] = useState(null);
   const [hataMesaji, setHataMesaji] = useState("");
 
+ useEffect(() => {
+    if (!girisYapanUye) {
+      
+      }
+  }, [girisYapanUye, navigate]);
+
+
   const kaydet = () => {
+  if(!girisYapanUye){
+ setHataMesaji("Personel eklemek için üye girişi yapmalısınız!");
+
+      return;
+  }
     if (!ad || !soyad || !bolum || !resimUrl) {
       setHataMesaji("Lütfen tüm alanları doldurun!");
       return;
