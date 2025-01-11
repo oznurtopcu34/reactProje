@@ -1,3 +1,11 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+
+
 .contanier {
     display: flex;
     flex-direction: column;
@@ -222,3 +230,110 @@ a{
   margin: 15px;
   padding: 15px;
 }
+
+
+
+body {
+  font-family: "Arial, sans-serif";
+  background-color: rgb(167, 53, 91);
+  color: rgb(7, 1, 1);
+}
+
+.hosgeldin {
+  text-align: center;
+  padding: 50px;
+  background:rgb(107, 39, 107);
+  color: white;
+
+  h1 {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+  }
+
+  p {
+    font-size: 1.2rem;
+    margin-top: 10px;
+  }
+}
+
+
+.hava {
+  display: flex;
+  justify-content: space-around;
+  padding: 40px 20px;
+  background: white;
+
+  .durumu,
+  .bilgi {
+    text-align: center;
+    background: #f4f4f4;
+    padding: 20px;
+    border-radius: 10px;
+    max-width: 300px;
+    box-shadow: 0 2px 5px rgb(126, 25, 58);
+
+    h3 {
+      color:rgb(190, 78, 115);
+      margin-bottom: 10px;
+    }
+
+    p {
+      font-size: 1rem;
+    }
+  }
+}
+
+.etkinlik {
+  padding: 40px 20px;
+  text-align: center;
+
+  h2 {
+    margin-bottom: 20px;
+    font-size: 2rem;
+  }
+
+  ul {
+    
+    padding: 0;
+
+    li {
+      font-size: 1.2rem;
+      margin: 10px 0;
+    }
+  }
+}
+
+.rahatlama {
+  text-align: center;
+  padding: 40px 20px;
+
+  h2 {
+    margin-bottom: 20px;
+    font-size: 2rem;
+  }
+
+  img {
+    max-width: 100%;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px palevioletred;
+  }
+}
+
+
+footer {
+  text-align: center;
+  padding: 20px;
+  background: rgb(151, 79, 91);
+  color: white;
+
+  p {
+    font-size: 0.9rem;
+    margin: 5px 0;
+  }
+}
+
+    
+
+   
+
+
